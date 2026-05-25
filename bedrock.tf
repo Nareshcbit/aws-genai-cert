@@ -22,7 +22,7 @@ resource "aws_bedrockagent_knowledge_base" "rag" {
     }
   }
 
-  depends_on = [opensearch_index.rag_vectors]
+  depends_on = [terraform_data.vector_index]
 }
 
 resource "aws_bedrockagent_data_source" "s3" {
