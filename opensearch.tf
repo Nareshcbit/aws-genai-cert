@@ -78,7 +78,9 @@ resource "aws_opensearchserverless_access_policy" "bedrock_kb" {
         ]
       },
     ]
-    Principal = [aws_iam_role.bedrock_kb.arn]
+    # bedrock_kb role: runtime access for the KB service
+    # current caller: Terraform executor needs access to create the index
+    Principal = [aws_iam_role.bedrock_kb.arn, data.aws_caller_identity.current.arn]
   }])
 }
 
