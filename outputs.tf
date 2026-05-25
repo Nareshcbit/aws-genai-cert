@@ -8,4 +8,7 @@ output "opensearch_collection_arn" {
   value       = aws_opensearchserverless_collection.rag_vectors.arn
 }
 
-# knowledge_base_id added in Session 3 (bedrock.tf)
+output "knowledge_base_id" {
+  description = "ID of the Bedrock Knowledge Base."
+  value       = aws_bedrockagent_knowledge_base.rag.id
+}
