@@ -2,7 +2,7 @@ module "rag_docs_bucket" {
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "~> 4.0"
 
-  bucket = "${var.name_prefix}-rag-docs"
+  bucket = "${var.name_prefix}-docs"
 
   versioning = {
     enabled = true
