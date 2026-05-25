@@ -8,6 +8,11 @@ output "opensearch_collection_arn" {
   value       = aws_opensearchserverless_collection.rag_vectors.arn
 }
 
+output "opensearch_collection_endpoint" {
+  description = "OpenSearch Serverless collection endpoint. Pass as opensearch_endpoint var on second apply."
+  value       = aws_opensearchserverless_collection.rag_vectors.collection_endpoint
+}
+
 output "knowledge_base_id" {
   description = "ID of the Bedrock Knowledge Base."
   value       = aws_bedrockagent_knowledge_base.rag.id

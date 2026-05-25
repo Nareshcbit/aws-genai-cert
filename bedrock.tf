@@ -21,6 +21,8 @@ resource "aws_bedrockagent_knowledge_base" "rag" {
       }
     }
   }
+
+  depends_on = [opensearch_index.rag_vectors]
 }
 
 resource "aws_bedrockagent_data_source" "s3" {
