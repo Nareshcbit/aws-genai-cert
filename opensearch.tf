@@ -94,6 +94,7 @@ resource "terraform_data" "vector_index" {
       AWS_REGION_NAME = var.region
     }
     command = <<-BASH
+      python3 -m pip install boto3 --quiet --user
       python3 - <<'PYEOF'
 import boto3, json, sys, os
 from botocore.auth import SigV4Auth
