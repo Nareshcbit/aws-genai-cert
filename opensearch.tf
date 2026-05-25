@@ -6,20 +6,20 @@ locals {
 resource "aws_opensearchserverless_security_policy" "encryption" {
   name = "${var.name_prefix}-enc"
   type = "encryption"
-  policy = jsonencode([{
+  policy = jsonencode({
     Rules = [{
       ResourceType = "collection"
       Resource     = ["collection/${local.collection_name}"]
     }]
     AWSOwnedKey = true
-  }])
+  })
 }
 
 # Network policy — public access for the teaching lab endpoint and dashboard
 resource "aws_opensearchserverless_security_policy" "network" {
   name = "${var.name_prefix}-net"
   type = "network"
-  policy = jsonencode([{
+  policy = jsonencode({
     Rules = [
       {
         ResourceType = "collection"
@@ -31,7 +31,7 @@ resource "aws_opensearchserverless_security_policy" "network" {
       },
     ]
     AllowFromPublic = true
-  }])
+  })
 }
 
 # Data-access policy — grants the Bedrock KB role read/write on indices
