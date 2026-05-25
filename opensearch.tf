@@ -19,7 +19,7 @@ resource "aws_opensearchserverless_security_policy" "encryption" {
 resource "aws_opensearchserverless_security_policy" "network" {
   name = "${var.name_prefix}-net"
   type = "network"
-  policy = jsonencode({
+  policy = jsonencode([{
     Rules = [
       {
         ResourceType = "collection"
@@ -31,7 +31,7 @@ resource "aws_opensearchserverless_security_policy" "network" {
       },
     ]
     AllowFromPublic = true
-  })
+  }])
 }
 
 # Data-access policy — grants the Bedrock KB role read/write on indices
